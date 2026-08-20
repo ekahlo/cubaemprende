@@ -1,0 +1,86 @@
+<header class="fixed-top header-custom" id="main-header">
+    <!-- NIVEL 1: Barra Superior (Visible SOLO en escritorio: d-none d-lg-block) -->
+    <div class="top-bar py-1 border-bottom border-white border-opacity-25 text-white d-none d-lg-block">
+        <div class="container d-flex justify-content-between align-items-center small">
+            <!-- Contactos (Izquierda) -->
+            <div class="d-flex align-items-center gap-3 text-small">
+                <span><i class="bi bi-telephone-fill me-1"></i> +53 7 123456</span>
+                <span><i class="bi bi-envelope-fill me-1"></i> contacto@cubaemprende.co.cu</span>
+            </div>
+            
+            <!-- Redes e Idioma (Derecha) -->
+            <div class="ms-auto d-flex align-items-center gap-3">
+                <div class="border-end border-white border-opacity-25 ps-3">
+                    <select class="form-select form-select-sm bg-transparent text-white border-0 py-0 pe-4 shadow-none custom-lang-select" aria-label="Seleccionar idioma">
+                        <option value="es" class="text-dark">ES</option>
+                        <option value="en" class="text-dark">EN</option>
+                    </select>
+                </div>
+                <div class="header-socials">
+                    <a href="#" class="text-white me-2"><i class="bi bi-whatsapp"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-2"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NIVEL 2: Barra Principal + Menú Hamburguesa -->
+    <nav class="navbar navbar-expand-lg navbar-light py-3">
+        <div class="container">
+            <!-- Logo -->
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="#">
+                <img src="/src/assets/images/logo.svg" alt="CubaEmprende" height="60">
+            </a>
+            
+            <!-- Botón Hamburguesa -->
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <!-- Contenido del Menú Desplegable -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 py-2 py-lg-0 text-center">
+                    <li class="nav-item"><a class="nav-link active fw-semibold" href="#">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#quienes-somos">¿Quiénes Somos?</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <a class="btn btn-outline-danger px-3 w-100 w-lg-auto" href="#contacto">Contáctanos</a>
+                    </li>
+                </ul>
+
+                <!-- 📱 SECCIÓN MÓVIL (Inyectada al final del menú hamburguesa, visible SOLO en pantallas < lg) -->
+                <div class="mobile-menu-extra d-lg-none mt-4 pt-3 border-top border-secondary border-opacity-25 text-dark text-center">
+                    <!-- Teléfono y Correo -->
+                    <div class="d-flex flex-column gap-2 mb-3 small">
+                        <a href="tel:+537123456" class="text-decoration-none text-dark">
+                            <i class="bi bi-telephone-fill me-2 text-primary"></i> +53 7 123456
+                        </a>
+                        <a href="mailto:contacto@cubaemprende.co.cu" class="text-decoration-none text-dark">
+                            <i class="bi bi-envelope-fill me-2 text-primary"></i> contacto@cubaemprende.co.cu
+                        </a>
+                    </div>
+
+                    <!-- Redes Sociales e Selector de Idioma -->
+                    <div class="d-flex align-items-center justify-content-between pt-2">
+                        <div class="mobile-socials">
+                            <a href="#" class="text-primary me-3 fs-5"><i class="bi bi-whatsapp"></i></a>
+                            <a href="#" class="text-primary me-3 fs-5"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="text-primary me-3 fs-5"><i class="bi bi-instagram"></i></a>
+                        </div>
+                        
+                        <!-- Selector de Idioma para móvil -->
+                        <div class="bg-light px-2 py-1 rounded border">
+                            <select class="form-select form-select-sm bg-transparent border-0 py-0 shadow-none text-dark fw-semibold" style="cursor: pointer;">
+                                <option value="es">ES</option>
+                                <option value="en">EN</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+</header>
