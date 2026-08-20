@@ -6,6 +6,7 @@ const components = [
   { id: 'component-nav', path: '/src/components/nav.html' },
   { id: 'component-hero', path: '/src/components/hero.html' },
   { id: 'component-cubaemprende', path: '/src/components/cubaemprende.html' },
+  { id: 'component-servicios', path: '/src/components/servicios.html' },
 ];
 
 async function injectComponents() {

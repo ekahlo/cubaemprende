@@ -4,14 +4,17 @@
 // 2. Definición de variables y colores
 $custom-blue: #004EA2;
 $custom-red:  #C0010B;
+$custom-gray-bg:#F2F2F2;
+$nav-gray: #606060;
 
 $primary: $custom-blue;
 $danger:  $custom-red;
-$nav-gray: #606060;
+$secondary: $nav-gray;
 
 $theme-colors: (
   "primary": $primary,
-  "danger":  $danger
+  "danger":  $danger,
+  "secondary":  $secondary
 );
 
 $btn-border-radius: 3px;
@@ -107,7 +110,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
   .hero-wave-container {
     position: absolute;
-    bottom: -1px;
+    bottom: -4px;
     left: 0;
     width: 100%;
     line-height: 0;
@@ -117,16 +120,21 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
     .hero-wave-img {
       width: 100%;
-      height: auto;
+      height: calc(100% + 2px);
       min-height: 45px;
       display: block;
       object-fit: cover;
+      transform: scaleY(1.02);
+      transform-origin: bottom center;
+      backface-visibility: hidden;
+     -webkit-backface-visibility: hidden;
     }
   }
+
   .floating-circle-hero {
       position: absolute;
       right: 10%;
-      bottom: -27px; 
+      bottom: -27px;
       width: 510px; 
       height: 510px;
       z-index: 2; 
@@ -196,7 +204,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   }
 
   .navbar {
-    background-color: rgba(255, 255, 255, 0.80) !important;
+    background-color: rgba($white, 0.80) !important;
     backdrop-filter: blur(8px);
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
@@ -218,7 +226,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     &:hover {
       background-color: $custom-red;
       border-color: $custom-red;
-      color: #ffffff !important;
+      color: $white !important;
     }
   }
 
@@ -228,9 +236,9 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 
     .navbar {
-      background-color: #ffffff !important;
+      background-color: $white !important;
       backdrop-filter: none;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+      box-shadow: 0 4px 15px rgba($black, 0.1) !important;
     }
   }
 
@@ -241,10 +249,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     }
 
     .navbar-collapse {
-      background-color: #ffffff;
+      background-color: $white;
       padding: 1.25rem;
       border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 30px rgba($black, 0.15);
       margin-top: 0.5rem;
       max-height: 80vh;
       overflow-y: auto;
@@ -272,12 +280,17 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 // SECCIÓN ¿QUÉ ES CUBAEMPRENDE?
 // ==========================================
 .cubaemprende-section {
-  background-color: #ffffff;
+  background-color: $white;
   padding-top: 2rem;
   padding-bottom: 0; 
   position: relative;
   z-index: 10;
   overflow: visible !important;
+  margin-top: -1.5px !important; // Sube 1.5px para tapar la rendija transparente
+  transform: scaleY(1.005);      // Expande verticalmente un 0.5% imperceptible
+  transform-origin: top center;  // Mantiene el punto de anclaje arriba
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
   .cubaemprende-content {
     position: relative;
@@ -303,7 +316,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
   .section-text {
     font-size: 0.98rem;
-    color: #4a5568;
+    color: $nav-gray;
 
     @media (max-width: 991.98px) {
       font-size: 12px !important;
@@ -315,13 +328,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     position: relative;
     width: 100%;
     line-height: 0;
-    margin-top: -30px; 
+    margin-top: -100px; 
     z-index: 1 !important;
 
     img {
       width: 100%;
       height: auto;
       display: block;
+      margin-bottom: -2px;
+      object-fit: cover;
     }
   }
 
@@ -336,7 +351,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
       position: absolute;
       border-radius: 50%;
       overflow: hidden;
-      border: 4px solid #ffffff;
+      border: 4px solid $white;
       transition: transform 0.3s ease;
 
       img {
@@ -383,6 +398,200 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
       
       &::after {
         margin-left: 0;
+      }
+    }
+  }
+}
+
+// ==========================================
+// SECCIÓN NUESTROS SERVICIOS
+// ==========================================
+.servicios-section {
+  background-color: transparent !important;
+  margin-top: -6rem; 
+  z-index: 10 !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(6rem - 2px);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $custom-gray-bg;
+    z-index: -1;
+  }
+  .circle-deco {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+    animation: floatAnimation 6s ease-in-out infinite;
+  }
+
+  // Círculo 1 (Grande Izquierda)
+  .circle-1 {
+    width: 400px;
+    top: -100px;
+    left: 347px;
+    animation-delay: 0s;
+  }
+
+  // Círculo 2 (Pequeño Centro Inferior)
+  .circle-2 {
+    width: 200px;
+    bottom: -40px;
+    left: 12%;
+    animation-delay: 2s;
+  }
+
+  // Círculo 3 (Derecha Inferior)
+  .circle-3 {
+    width: 320px;
+    bottom: -175px;
+    right: 180px;
+    animation-delay: 4s;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    letter-spacing: 0.5px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 150px;
+      max-width: 100%;
+      height: 3px;
+      background-color: $custom-blue;
+      margin-top: 1rem;
+    }
+  }
+
+  // Estilos Base de Tarjetas
+  .service-card {
+    background-color: $white;
+    border-radius: 4px;
+    transition: transform 0.35s ease-in-out, box-shadow 0.35s ease-in-out;
+    cursor: pointer;
+    min-height: 380px;
+    position: relative;
+    overflow: hidden;
+
+    .card-body,
+    .corner-graphic {
+      position: relative;
+      z-index: 2; // Contenido por encima
+    }
+
+    // Línea divisora bajo el título
+    .title-divider {
+      width: 100px;
+      height: 1px;
+      background-color: $nav-gray;
+      transition: background-color 0.35s ease;
+    }
+
+    .card-title,
+    .card-text {
+      transition: color 0.35s ease;
+      color: $nav-gray;
+    }
+
+    // Enlace con animación de desplazamiento
+    .service-link {
+      transition: color 0.35s ease, transform 0.35s ease;
+      display: inline-flex;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -50px;
+      left: -50px;
+      width: 0;
+      height: 0;
+      background: linear-gradient(135deg, $custom-red 0%, $custom-blue 100%);
+      border-radius: 50%;
+      z-index: 1;
+      transition: width 0.5s ease-in-out, height 0.5s ease-in-out, border-radius 0.4s ease-in-out;
+    }
+
+    // Elemento Gráfico (Esquina Inferior Izquierda)
+    .corner-graphic {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 90px;
+      height: 90px;
+      pointer-events: none;
+      z-index: 1;
+
+      // Cuarto de círculo sólido interior
+      .graphic-pie {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 42px;
+        height: 42px;
+        background-color: $custom-blue;
+        border-top-right-radius: 100%;
+        transition: background-color 0.35s ease;
+      }
+
+      // Arco exterior
+      .graphic-arc {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 85px;
+        height: 85px;
+        border: 4px solid $custom-blue;
+        border-bottom: none;
+        border-left: none;
+        border-top-right-radius: 100%;
+        transition: border-color 0.35s ease;
+      }
+    }
+
+    // ESTADO HOVER: Degradado, Colores e Inclinación/Desplazamiento
+    &:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+
+      &::before {
+        width: 150%;
+        height: 150%;
+        border-radius: 0;
+        bottom: -20px;
+        left: -20px;
+      }
+
+      // Textos a Blanco
+      .card-title,
+      .card-text {
+        color: $white !important;
+      }
+
+      // Enlace a Blanco + Desplazamiento a la derecha
+      .service-link {
+        color: $white !important;
+        font-style: italic;
+        transform: translateX(6px); 
+      }
+
+      // Divisor a Blanco
+      .title-divider {
+        background-color: $white;
+      }
+
+      // Gráfica de esquina a Blanco
+      .corner-graphic {
+        .graphic-pie {
+          background-color: $white;
+        }
+        .graphic-arc {
+          border-color: $white;
+        }
       }
     }
   }
