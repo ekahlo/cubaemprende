@@ -41,7 +41,7 @@ $font-family-sans-serif: 'Montserrat', system-ui, -apple-system, sans-serif;
 html, body {
   height: auto !important;
   width: 100%;
-  overflow-x: hidden !important; // ⚡ Elimina el scroll horizontal en todo el sitio
+  overflow-x:clip;
 }
 
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -411,6 +411,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-top: -6rem; 
   z-index: 10 !important;
 
+  @media (max-width: 767.98px) {
+    margin-top: 3rem !important;   // Anulamos la subida agresiva que choca con el texto
+    padding-top: 2.5rem;         // Le damos un espacio limpio respecto a la onda
+
+    &::before {
+      top: -3rem !important;         // El fondo gris empieza desde el borde normal
+    }
+  }
+
   &::before {
     content: '';
     position: absolute;
@@ -467,6 +476,32 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
       margin-top: 1rem;
     }
   }
+  
+  @media (max-width: 767.98px) {
+    .carrusel-mobile {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; // Desplazamiento fluido en iOS
+      padding-bottom: 1.5rem;             // Espacio para la sombra de las tarjetas
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
+
+      // Oculta la barra de scroll estética manteniento la funcionalidad
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      .card-item {
+        flex: 0 0 82% !important; // Muestra una tarjeta casi entera y asoma la siguiente
+        max-width: 82% !important;
+        scroll-snap-align: center; // Se ajusta al centro al soltar el dedo
+      }
+    }
+  }
 
   // Estilos Base de Tarjetas
   .service-card {
@@ -503,6 +538,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
       transition: color 0.35s ease, transform 0.35s ease;
       display: inline-flex;
     }
+
     &::before {
       content: '';
       position: absolute;
@@ -593,6 +629,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
           border-color: $white;
         }
       }
+      
     }
   }
 }
